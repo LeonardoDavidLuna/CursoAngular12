@@ -3,18 +3,28 @@
 
 <div class="card-columns">
 
-    <div class="card">
-        <img src="assets/img/spiderman.png" width="50" height="50" alt="Card image cap" class="card-img-top img-fluid">
+    <div class="card card animated fadeIn fast" *ngFor="let heroes of heroes; let i = index">
+        <img [src]="heroes.img" width="50" height="50" [alt]="heroes.nombre" class="card-img-top img-fluid">
         <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">This card has supporting text below as a natural</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h4 class="card-title">{{ heroes.nombre }}</h4>
+            <p class="card-text">{{ heroes.bio }}</p>
+            <p class="card-text"><small class="text-muted">{{ heroes.aparicion }}</small></p>
 
             <button class="btn btn-outline-primary btn-block">
-                Ver más...
+                <a [routerLink]="['/heroe/',i]" class="btn btn-outline-primary" >Ver más...</a>
             </button>
 
         </div>
     </div>
 
 </div>
+
+<!-- Formas de navergar
+    1       +Usando un botón
+    1.1.    Crear nueva ruta en app.routes
+    1.2.    Añadir routerLink en <a>: <a [routerLink]="['/heroe/',i]">Ver más...</a>
+    1.3.    { path: 'heroe/:id', component: HeroeComponent }, //recibe ID
+
+    2.- link
+
+-->
